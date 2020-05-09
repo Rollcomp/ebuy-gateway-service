@@ -3,7 +3,7 @@ server:
 
 spring:
   application:
-    name: gateway-service
+    name: ebuy-gateway-service
 
 zuul:
   ignored-services: '*'
@@ -11,11 +11,11 @@ zuul:
     connect-timeout-millis: 50000000
     socket-timeout-millis: 5000000
   routes:
-    oauth-server:
+    ebuy-oauth-server:
       serviceId: oauth-server
       path: /oauth/**
       stripPrefix: true
-    account-service:
+    ebuy-account-service:
       serviceId: account-service
       path: /accounts/**
       stripPrefix: true
@@ -24,7 +24,7 @@ zuul:
 eureka:
   client:
     service-url:
-      defaultZone: http://localhost:8761/eureka/
+      defaultZone: https://ebuy-registry-service.herokuapp.com/eureka
     register-with-eureka: true
     fetch-registry: true
     healthcheck:
